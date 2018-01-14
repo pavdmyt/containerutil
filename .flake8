@@ -1,0 +1,8 @@
+[flake8]
+exclude =
+    .git,
+    .tox,
+    .cache,
+    __pycache__,
+    dist,
+    build
