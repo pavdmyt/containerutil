@@ -15,7 +15,7 @@ lint:
 	@pylint setup.py $(name)/ -rn -f colorized
 
 isort-all:
-	isort -rc --atomic --verbose setup.py $(name)/
+	isort -rc --atomic --verbose setup.py $(name)/ tests/
 
 clean:
 	@echo "$(OK_COLOR)==> Cleaning up files that are already in .gitignore...$(NO_COLOR)"
