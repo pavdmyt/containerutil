@@ -1,12 +1,19 @@
 # -*- coding: utf-8 -*-
 
+"""
+containerutil.path
+~~~~~~~~~~~~~~~~~~
+
+Container's filesystem path tools.
+"""
+
 
 class Path(object):
     _cmd_tmpl = '/bin/sh -c "test {0} {1} && echo true"'
 
     def __init__(self, container_obj, path):
         self._ctnr = container_obj
-        self._path = path
+        self._path = path if path else '/'
 
     def exists(self):
         return self.is_file() or self.is_dir()
