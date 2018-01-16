@@ -9,8 +9,8 @@ CONTAINER_NAME = 'my_container'
 
 def main():
     client = docker.from_env()
-    container = client.containers.get('cp_test')
-    path_list = ['/home', '/etc/hosts', '/foo/bar']
+    container = client.containers.get('alpine-test')
+    path_list = ['/home', '/etc/hosts', '/foo/bar', '/etc/mtab']
 
     for path in path_list:
         print("---\n* Checking {0}".format(path))
@@ -27,6 +27,9 @@ def main():
 
         if p.is_dir():
             print("{0} is a directory".format(path))
+
+        if p.is_symlink():
+            print("{0} is a symbolic link".format(path))
 
 
 if __name__ == '__main__':

@@ -26,6 +26,10 @@ class Path(object):
         cmd = self._cmd_tmpl.format('-d', self._path)
         return self._checker(cmd)
 
+    def is_symlink(self):
+        cmd = self._cmd_tmpl.format('-L', self._path)
+        return self._checker(cmd)
+
     def _checker(self, cmd):
         resp = self._ctnr.exec_run(cmd)
         if isinstance(resp, bytes):
