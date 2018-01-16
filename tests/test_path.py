@@ -16,12 +16,14 @@ class TC(object):
     """Test case."""
 
     def __init__(self, path, exists=False,
-                 is_dir=False, is_file=False, is_symlink=False):
+                 is_dir=False, is_file=False,
+                 is_symlink=False, is_fifo=False):
         self.path = path
         self.exists = exists
         self.is_dir = is_dir
         self.is_file = is_file
         self.is_symlink = is_symlink
+        self.is_fifo = is_fifo
 
 
 test_cases = [
@@ -60,6 +62,10 @@ test_cases = [
     TC('/usr/bin/time', True, is_file=True, is_symlink=True),
     TC('/usr/bin/vi', True, is_file=True, is_symlink=True),
     TC('/usr/bin/wc', True, is_file=True, is_symlink=True),
+
+    # Named pipes (FIFO)
+    TC('/fifo1', True, is_fifo=True),
+    TC('/fifo2', True, is_fifo=True),
 
     # Non-existent
     TC('/foo'),
@@ -100,3 +106,9 @@ def test_is_dir(case, container):
 def test_is_symlink(case, container):
     p = cutil.Path(container, case.path)
     assert p.is_symlink() == case.is_symlink
+
+
+@pytest.mark.parametrize('case', test_cases, ids=id_func)
+def test_is_fifo(case, container):
+    p = cutil.Path(container, case.path)
+    assert p.is_fifo() == case.is_fifo

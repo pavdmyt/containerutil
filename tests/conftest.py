@@ -53,6 +53,10 @@ def container(dkr_client, session_id, image, image_lst):
         name='test-{0}-{1}'.format(img_name, session_id),
         detach=True,
     )
+
+    # Create named pipes (FIFO)
+    ctnr.exec_run('mkfifo /fifo1')
+    ctnr.exec_run('mkfifo /fifo2')
     yield ctnr
 
     # Cleanup

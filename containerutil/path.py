@@ -16,7 +16,8 @@ class Path(object):
         self._path = path if path else '/'
 
     def exists(self):
-        return self.is_file() or self.is_dir()
+        cmd = self._cmd_tmpl.format('-e', self._path)
+        return self._checker(cmd)
 
     def is_file(self):
         cmd = self._cmd_tmpl.format('-f', self._path)
@@ -28,6 +29,10 @@ class Path(object):
 
     def is_symlink(self):
         cmd = self._cmd_tmpl.format('-L', self._path)
+        return self._checker(cmd)
+
+    def is_fifo(self):
+        cmd = self._cmd_tmpl.format('-p', self._path)
         return self._checker(cmd)
 
     def _checker(self, cmd):
