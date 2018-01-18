@@ -85,6 +85,12 @@ def id_func(case):
 
 
 @pytest.mark.parametrize('case', test_cases, ids=id_func)
+def test_repr(case, container):
+    p = cutil.Path(container, case.path)
+    assert repr(p) == 'Path({0!r}, {1})'.format(container, p._path)
+
+
+@pytest.mark.parametrize('case', test_cases, ids=id_func)
 def test_exists(case, container):
     p = cutil.Path(container, case.path)
     assert p.exists() == case.exists

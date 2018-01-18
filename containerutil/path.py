@@ -15,6 +15,9 @@ class Path(object):
         self._ctnr = container_obj
         self._path = path if path else '/'
 
+    def __repr__(self):
+        return 'Path({0!r}, {1})'.format(self._ctnr, self._path)
+
     def exists(self):
         cmd = self._cmd_tmpl.format('-e', self._path)
         return self._checker(cmd)
