@@ -1,0 +1,31 @@
+sudo: required
+
+language: python
+
+services:
+  - docker
+
+python:
+  - 2.7
+  - 3.3
+  - 3.4
+  - 3.5
+  - 3.6
+  - pypy
+  - pypy3
+  - nightly
+
+allow_failures:
+  - python: pypy
+
+install:
+  - pip install docker~=2.7.0
+  - pip install pytest~=3.3.2
+  - pip install pytest-cov~=2.5.1
+  - pip install python-coveralls~=2.9.1
+
+script:
+  - make coverage
+
+after_success:
+  - coveralls
