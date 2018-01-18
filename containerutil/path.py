@@ -15,6 +15,9 @@ class Path(object):
         self._ctnr = container_obj
         self._path = path if path else '/'
 
+    def __str__(self):
+        return '{0}:{1}'.format(self._ctnr.name, self._path)
+
     def __repr__(self):
         return 'Path({0!r}, {1})'.format(self._ctnr, self._path)
 
