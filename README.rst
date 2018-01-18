@@ -1,5 +1,5 @@
-containerutil
-=============
+containerutil |Build Status| |Coverage| |pypi| |Versions| |Wheel|
+=================================================================
 
 ``containerutil.Path`` provides API similar to `pathlib.Path`_ for inspecting
 `docker container`_ file system:
@@ -46,3 +46,14 @@ MIT - Pavlo Dmytrenko
 .. _pathlib.Path: https://docs.python.org/3/library/pathlib.html
 .. _docker container: https://www.docker.com/what-container
 .. _PyPI: https://pypi.org/
+
+.. |Build Status| image:: https://travis-ci.org/pavdmyt/containerutil.svg?branch=master
+   :target: https://travis-ci.org/pavdmyt/containerutil
+.. |Coverage| image:: https://coveralls.io/repos/github/pavdmyt/containerutil/badge.svg?branch=master
+   :target: https://coveralls.io/github/pavdmyt/containerutil?branch=master
+.. |pypi| image:: https://img.shields.io/pypi/v/containerutil.svg
+   :target: https://pypi.org/project/containerutil/
+.. |Versions| image:: https://img.shields.io/pypi/pyversions/containerutil.svg
+   :target: https://pypi.org/project/containerutil/
+.. |Wheel| image:: https://img.shields.io/pypi/wheel/containerutil.svg
+   :target: https://pypi.org/project/containerutil/
