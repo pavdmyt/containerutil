@@ -7,23 +7,18 @@ tests.test_path
 Tests for containerutil.path
 """
 
+from collections import namedtuple
+
 import pytest
 
 import containerutil as cutil
 
 
-class TC(object):
-    """Test case."""
-
-    def __init__(self, path, exists=False,
-                 is_dir=False, is_file=False,
-                 is_symlink=False, is_fifo=False):
-        self.path = path
-        self.exists = exists
-        self.is_dir = is_dir
-        self.is_file = is_file
-        self.is_symlink = is_symlink
-        self.is_fifo = is_fifo
+TC = namedtuple(
+    'TestCase',
+    ['path', 'exists', 'is_dir', 'is_file', 'is_symlink', 'is_fifo']
+)
+TC.__new__.__defaults__ = False, False, False, False, False
 
 
 test_cases = [
